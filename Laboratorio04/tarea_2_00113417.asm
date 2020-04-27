@@ -49,6 +49,26 @@ sumu:	add bx, 1h
 sig:	cmp bx, 21F 
 	jb proye
 
+;	EJERCICIO 3
+
+	mov ax, 0000h
+	mov ax, 0d ;Valores triviales
+	mov [220h], ax ;Se colocan en las primeras celdas de memoria
+	mov ax, 1d ;Valores triviales
+	mov [221h], ax
+	mov bx, 222h 
+
+fibo:	mov ax, 0000h 
+	mov [bx], ax
+	sub bx, 2h ;Le resta 2 para luego sumarle el resultado con el número anterior Fn-2
+	mov al, [bx] 
+	add bx, 1h ;Le suma 1 al resultado de restar el fn-1 + fn-2
+	add ax,[bx]
+	add bx, 1h 
+	mov [bx], 1h 
+	add bx, 1h 
+	cmp bx, 22Fh
+	jb fibo
 
 
 	int 20h
