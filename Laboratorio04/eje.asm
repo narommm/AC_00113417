@@ -6,6 +6,7 @@ section .text
 	mov cx, [len]
 
 
+;   	EJERCICIO  1
 lupi:	;mov cx, 13417d ;3469‬h
 	mov ax, 1d 
 	mov cx, 3d
@@ -26,7 +27,29 @@ lupi:	;mov cx, 13417d ;3469‬h
 	mov bl, [comnt]
 	mov [200h], bl ;Guarda el mensaje en la celda 210
 	
-	
+
+
+
+	;EJERCICIO 2
+	mov ax, 0000h ;Se limpia el registro ax
+	mov al, 2d 
+	mov bx, 210h 
+	mov cx, 2d ;Se irá multiplicando con el número de casos anterior en ax
+proye:	mul cx ;Realiza la proyección casosxdia . 2
+	mov [bx], ax 
+	cmp ah, 00h 
+	ja sumd 
+	je sumu
+
+sumd: 	add bx, 2h 
+	jmp sig 
+
+sumu:	add bx, 1h 
+
+sig:	cmp bx, 21F 
+	jb proye
+
+
 
 	int 20h
 
